@@ -8,6 +8,14 @@ import '../src/css/style.css';
 
 const title = '';
 
+function displayFact(e) {
+  const animalName = e.target.alt;
+  const randomIndex = Math.floor(Math.random() * (3 - 0) + 0);
+  const randomFact = animals[animalName].facts[randomIndex];
+  //return randomFact;
+  document.getElementById('fact').innerHTML = randomFact;
+}
+
 const background = <img
     className='background'
     alt='ocean'
@@ -24,6 +32,7 @@ const background = <img
         alt={animal}
         src={require(`./images/${animal}.png`)}
         role='button'
+        onClick={displayFact}
       />
    )
  }
@@ -33,6 +42,7 @@ const animalFacts = (<div>
     {background}
       <div className='animals'>
         {images}
+        <p id='fact'></p>
       </div>
     </div>
 );
