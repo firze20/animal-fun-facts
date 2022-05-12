@@ -5,9 +5,6 @@ import ReactDOM from 'react-dom';
 //import CSS
 import '../src/css/style.css';
 
-
-const title = '';
-
 function displayFact(e) {
   const animalName = e.target.alt;
   const randomIndex = Math.floor(Math.random() * (3 - 0) + 0);
@@ -15,6 +12,12 @@ function displayFact(e) {
   //return randomFact;
   document.getElementById('fact').innerHTML = randomFact;
 }
+
+const title = '';
+
+let showBackground = true;
+
+
 
 const background = <img
     className='background'
@@ -39,7 +42,7 @@ const background = <img
 
 const animalFacts = (<div>
     <h1> {title ? title : 'Click an animal for a fun fact.' } </h1>
-    {background}
+    {showBackground && background }
       <div className='animals'>
         {images}
         <p id='fact'></p>
