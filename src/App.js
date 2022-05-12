@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import {animals} from './animals.js'
+//CSS
+import './css/style.css'
+
+let title = '';
+
+const background = (
+  <img
+    className='background'
+    alt='ocean'
+    src={require('./images/ocean.jpg')}
+   />
+);
+
+let images = [];
+
+for (let animal in animals) {
+  console.log(animal);
+  images.push(
+    <img 
+      key={animal}
+      className='animal'
+      alt={animal}
+      src={animals[animal].images}
+      role='button'
+    />
+  )
+}
+
+
+const animalFacts = (
+  <div>
+  <h1>
+      {title ? title : 'Click an animal for a fun fact!'}
+    </h1>
+    {background}
+    <div className='animals'>
+      {images}
+    </div>
+  </div>
+);
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {animalFacts}
     </div>
   );
 }
 
 export default App;
+
