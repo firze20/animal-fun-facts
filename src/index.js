@@ -1,17 +1,41 @@
+import { animals } from './animals';
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+//import CSS
+import '../src/css/style.css';
+
+
+const title = '';
+
+const background = <img
+    className='background'
+    alt='ocean'
+    src={require('./images/ocean.jpg')}
+ />;
+
+ const images = [];
+
+ for (const animal in animals) {
+   images.push(
+     <img
+        key={animal}
+        className='animal'
+        alt={animal}
+        src={require(`./images/${animal}.png`)}
+        role='button'
+      />
+   )
+ }
+
+const animalFacts = (<div>
+    <h1> {title ? title : 'Click an animal for a fun fact.' } </h1>
+    {background}
+      <div className='animals'>
+        {images}
+      </div>
+    </div>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDOM.render(animalFacts, document.getElementById('root'));
+
